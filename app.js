@@ -1,16 +1,35 @@
+// requires that inquirer be used 
+const inquirer = require('inquirer');
 
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-console.log(profileDataArgs);
-
-const printProfileData = profileDataArr => {
-    for (let i = 0; i < profileDataArr.length; i++) {
-        console.log(profileDataArr[i]);
+inquirer 
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
     }
+  ])
+  .then(answers => console.log(answers));
 
-    console.log("================");
 
-    // is the same as this
-  profileDataArr.forEach(profileItem => console.log(profileItem));
-};
+// // requires the module file system to be used 
+// const fs = require('fs');
+// const generatePage = require('./src/page-template.js');
+// // creates an array to hold info it gathers 
 
-printProfileData(profileDataArgs);
+// const pageHTML = generatePage(givenName, github);
+
+
+
+
+
+
+
+// // what file type we are creating, what we are printing (html string), callback function to handle errors
+// fs.writeFile('./index.html', pageHTML, err => {
+//   if (err) throw err;
+
+//   console.log("portfolio complete! Check out index.html to see the output");
+// });
+
+
