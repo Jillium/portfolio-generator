@@ -1,16 +1,20 @@
+// requires the module file system to be used 
+const fs = require('fs');
+const generatePage = require('./src/page-template');
+// creates an array to hold info it gathers 
+const profileDataArgs = process.argv.slice(2);
 
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-console.log(profileDataArgs);
+const [givenName, github] = profileDataArgs;
 
-const printProfileData = profileDataArr => {
-    for (let i = 0; i < profileDataArr.length; i++) {
-        console.log(profileDataArr[i]);
-    }
 
-    console.log("================");
 
-    // is the same as this
-  profileDataArr.forEach(profileItem => console.log(profileItem));
-};
 
-printProfileData(profileDataArgs);
+
+// what file type we are creating, what we are printing (html string), callback function to handle errors
+fs.writeFile('./index.html', generatePage(givenName, github), err => {
+  if (err) throw err;
+
+  console.log("portfolio complete! Check out index.html to see the output");
+});
+
+
