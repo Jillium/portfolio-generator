@@ -1,3 +1,4 @@
+
 // create the about section
 const generateAbout = aboutText => {
   if (!aboutText) {
@@ -64,6 +65,9 @@ module.exports = templateData => {
   const { projects, about, ...header } = templateData;
   
 
+// function that takes command line arguments and prints them as html string
+
+module.exports = (givenName, github) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -74,6 +78,7 @@ module.exports = templateData => {
       <link rel="stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11/2/css/all.min.css">
       <link href="https://fonts.googleapis.com/css?family-Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
+
       <title>Portfolio Demo</title>
     </head>
     
@@ -95,6 +100,10 @@ module.exports = templateData => {
       <footer class="container text-center py-3">
         <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name}</h3>
       </footer>  
+
+      <h1>${givenName}</h1>
+      <h2><a href="https://github.com/${github}">Github</a></h2>
+
     </body>
     </html>  
     `;
